@@ -24,6 +24,7 @@ public class Game2048 extends Game {
                 setCellColor(i, j, Color.PURPLE);
             }
         }
+
     }
 
     private void createNewNumber() {
@@ -33,6 +34,42 @@ public class Game2048 extends Game {
             int n = getRandomNumber(10);
             gameField[x][y] = n < 9 ? 2 : 4;
         } else createNewNumber();
+    }
+
+    private void setCellColoredNumber(int x, int y, int value) {
+
+    }
+
+    private Color getColorByValue(int value) {
+        if (value == 0) {
+            return Color.SALMON;
+        } else if (value == 2) {
+            return Color.SNOW;
+        } else if (value == 4) {
+            return Color.LIGHTCORAL;
+        } else if (value == 8) {
+            return Color.PALEGOLDENROD;
+        } else if (value == 16) {
+            return Color.POWDERBLUE;
+        } else if (value == 32) {
+            return Color.PALETURQUOISE;
+        } else if (value == 64) {
+            return Color.PLUM;
+        } else if (value == 128) {
+            return Color.NAVAJOWHITE;
+        } else if (value == 256) {
+            return Color.TAN;
+        } else if (value == 512) {
+            return Color.ALICEBLUE;
+        } else if (value == 1024) {
+            return Color.OLDLACE;
+        } else if (value == 2048) {
+            return Color.LEMONCHIFFON;
+        }
+        else{
+            return Color.NONE;
+        }
+
     }
 }
 
