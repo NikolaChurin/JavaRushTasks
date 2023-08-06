@@ -2,6 +2,8 @@ package com.javarush.games.game2048;
 
 import com.javarush.engine.cell.*;
 
+import java.util.Arrays;
+
 public class Game2048 extends Game {
     private static final int SIDE = 4;
     private int[][] gameField = new int[SIDE][SIDE];
@@ -21,7 +23,8 @@ public class Game2048 extends Game {
     private void drawScene() {
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                setCellColor(i, j, Color.PURPLE);
+                // setCellColor(i, j, Color.PURPLE);
+                setCellColoredNumber(i, j, gameField[j][i]);
             }
         }
 
@@ -37,7 +40,7 @@ public class Game2048 extends Game {
     }
 
     private void setCellColoredNumber(int x, int y, int value) {
-
+        setCellValueEx(x, y, getColorByValue(value), value == 0 ? "" : value + "");
     }
 
     private Color getColorByValue(int value) {
@@ -65,11 +68,27 @@ public class Game2048 extends Game {
             return Color.OLDLACE;
         } else if (value == 2048) {
             return Color.LEMONCHIFFON;
-        }
-        else{
+        } else {
             return Color.NONE;
         }
 
     }
+
+    private boolean compressRow(int[] row) {
+        boolean answer = false;
+        int j = 0;
+        for (int i = 0; i < row.length; i++) {
+            if (row[i] > 0) {
+                if (i != j) {
+                    row[j] = row[i];
+                    row[i]=0;
+                    answer = true;
+                }
+                j++;
+            }
+        }
+       return  answer;
+    }
+
 }
 
