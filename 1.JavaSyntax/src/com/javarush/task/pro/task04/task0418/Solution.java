@@ -9,7 +9,11 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         double glass = 0.5;
-        //напишите тут ваш код
-
+        int answer;
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.nextBoolean())
+            answer = (int) Math.ceil(glass);
+        else answer = (int) Math.floor(glass);
+        System.out.println(answer);
     }
 }
